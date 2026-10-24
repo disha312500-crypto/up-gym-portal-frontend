@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UP State Gymnastics Championship 2026 - Official Accommodation Portal</title>
+
+  <!-- 100% Embedded Gymnast Web Icon (Favicon) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='100%25' x2='100%25' y2='0%25'%3E%3Cstop offset='0%25' stop-color='%2306b6d4'/%3E%3Cstop offset='35%25' stop-color='%234f46e5'/%3E%3Cstop offset='70%25' stop-color='%23ec4899'/%3E%3Cstop offset='100%25' stop-color='%23f59e0b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='120' cy='120' r='112' fill='%23ffffff' stroke='url(%23g)' stroke-width='12'/%3E%3Ccircle cx='122' cy='74' r='15' fill='url(%23g)'/%3E%3Cpath d='M88 30 Q95 58 112 82 L102 118 L48 195 L62 202 L118 134 L198 76 L190 65 L128 106 L124 84 Q152 64 176 72 L180 62 Q148 50 116 72 Q98 50 98 26 Z' fill='url(%23g)'/%3E%3C/svg%3E" />
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 16px; width: 100%; }
+    .view-section { display: none; padding: 28px 0; flex-grow: 1; }
+    .view-section.active { display: block; }
+
+    /* Top Bar & Header */
+    .top-bar {
+      background: #1e1b4b;
+      color: #ffffff;
+      font-size: 12px;
+      padding: 8px 16px;
+      border-bottom: 1px solid #312e81;
+    }
+    .top-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-gold {
+      background: #f59e0b;
+      color: #0f172a;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+    .badge-nsa {
+      background: linear-gradient(135deg, #0f172a, #312e81);
+      color: #fbbf24;
+      border: 1px solid #f59e0b;
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.2);
+    }
+    .header-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+    }
+    .logo-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid #fbcfe8;
+      padding: 2px;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    /* Buttons */
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+    button:active { transform: scale(0.98); }
+    .btn-indigo {
+      background: linear-gradient(135deg, #312e81, #4338ca);
+      color: #ffffff;
+      padding: 11px 20px;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.25);
+    }
+    .btn-indigo:hover { background: linear-gradient(135deg, #3730a3, #4f46e5); }
+    .btn-pink {
+      background: linear-gradient(135deg, #be185d, #ec4899);
+      color: #ffffff;
+      padding: 11px 20px;
+      font-size: 13px;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.28);
+    }
+    .btn-gold {
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #ffffff;
+      padding: 10px 18px;
+      font-size: 12px;
+    }
+    .btn-outline {
+      background: #ffffff;
+      color: #1e293b;
+      border: 1px solid #cbd5e1;
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+    .btn-outline:hover { background: #f1f5f9; }
+    .btn-sm { padding: 6px 11px; font-size: 11px; border-radius: 8px; }
+    .btn-emerald { background: #059669; color: #fff; }
+    .btn-danger { background: #ffe4e6; color: #be123c; border: 1px solid #fecdd3; }
+    .btn-danger:hover { background: #be123c; color: #ffffff; }
+
+    /* Cards & Grids */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 24px -4px rgba(15, 23, 42, 0.04);
+      margin-bottom: 22px;
+    }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+
+    /* Forms */
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #334155;
+      margin-bottom: 6px;
+      letter-spacing: 0.4px;
+    }
+    input, select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0f172a;
+      background: #ffffff;
+      outline: none;
+    }
+    input:focus, select:focus { border-color: #4338ca; box-shadow: 0 0 0 3px rgba(67,56,202,0.12); }
+
+    /* Male Indigo & Female Pink Boxes */
+    .box-male {
+      background: #eef2ff;
+      border: 2px solid #c7d2fe;
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .box-female-pink {
+      background: #fdf2f8;
+      border: 2px solid #f9a8d4;
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    /* Tables */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 13px; }
+    th {
+      background: #f1f5f9;
+      color: #475569;
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 12px 14px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    td { padding: 14px; border-bottom: 1px solid #e2e8f0; vertical-align: middle; }
+    .col-male { background: #eef2ff; color: #1e1b4b; }
+    .col-pink { background: #fdf2f8; color: #831843; }
+
+    /* Status Pills */
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+    .pill-pending { background: #fef3c7; color: #92400e; }
+    .pill-approved { background: #e0e7ff; color: #1e40af; }
+    .pill-checkout { background: #d1fae5; color: #065f46; }
+    .date-badge {
+      display: inline-block;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #1e293b;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      margin-top: 4px;
+    }
+
+    /* Modals */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.65);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #ffffff;
+      border-radius: 22px;
+      max-width: 500px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    /* Slideshow Box */
+    .slideshow-banner {
+      background: linear-gradient(135deg, #1e1b4b, #312e81);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+
+    /* Official Printable Certificate */
+    .cert-sheet {
+      background: #ffffff;
+      border: 6px double #1e1b4b;
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #ffffff; }
+      .view-section { display: none !important; }
+      #viewCertificate { display: block !important; padding: 0; }
+      .cert-sheet { border: 4px double #000; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP OFFICIAL ATTRIBUTION & HELPLINE BAR -->
+  <div class="top-bar no-print">
+    <div class="top-bar-inner">
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <span class="badge-gold">Official Host Portal</span>
+        <span>Overall Accommodation In-Charge: <strong>Rohit Kumar</strong></span>
+        <span style="color:#fbbf24; font-weight:800;">&bull; Powered by NSA Shooting</span>
+      </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <span style="color:#fbcfe8;">
+          Accommodation Helpline: <strong style="color:#fff;">Vishnu Kumar Rai (9793421682)</strong>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="header-nav no-print">
+    <div class="header-inner">
+      <div class="brand-box" onclick="showPage('viewHome')">
+        <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" class="logo-circle" />
+        <div>
+          <div style="font-size:10px; font-weight:800; color:#3730a3; text-transform:uppercase; letter-spacing:0.8px;">
+            UP State Gymnastics Championship 2026 &bull; <span style="color:#d97706;">Powered by NSA Shooting</span>
+          </div>
+          <h1 style="font-size:19px; font-weight:800; color:#0f172a;">
+            Accommodation &amp; Contingent Portal
+          </h1>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn-outline" onclick="showPage('viewHome')">Home</button>
+        <div id="topAuthButtons" style="display:flex; gap:8px;">
+          <button type="button" class="btn-indigo" onclick="openLoginScreen('coach')">Portal Login</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== PAGE 1: HOME LANDING VIEW ==================== -->
+  <main id="viewHome" class="view-section active no-print">
+    <div class="container">
+      <div class="card" style="background: linear-gradient(135deg, #eef2ff 0%, #ffffff 55%, #fdf2f8 100%); padding: 36px 28px;">
+        <div class="grid-2" style="align-items:center;">
+          
+          <div>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:16px;">
+              <span class="badge-nsa">&#9733; Powered by NSA Shooting</span>
+              <span style="display:inline-flex; align-items:center; background:#fff; border:1px solid #f9a8d4; padding:4px 12px; border-radius:999px; font-size:11px; font-weight:800; color:#831843;">
+                75 UP Districts
+              </span>
+            </div>
+
+            <h2 style="font-size:34px; font-weight:800; line-height:1.2; color:#0f172a; margin-bottom:14px;">
+              UP State Gymnastics Championship <span style="color:#4338ca;">Accommodation Management</span>
+            </h2>
+            <p style="color:#475569; font-size:15px; margin-bottom:22px;">
+              Accommodation portal for <strong>District Coaches (Maximum 4 Teams per District: Team 1, Team 2, Team 3, Team 4)</strong>, <strong>Judges &amp; Technical Officials</strong>, and <strong>Championship Administrators</strong>. Each coach's entries are shown according to their registered Mobile &amp; PIN.
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-bottom:26px;">
+              <button type="button" class="btn-indigo" onclick="openLoginScreen('coach')">District Coach Portal</button>
+              <button type="button" class="btn-pink" onclick="openLoginScreen('official')">Judge &amp; Official Portal</button>
+              <button type="button" class="btn-outline" onclick="openLoginScreen('admin')">Admin Control Desk</button>
+            </div>
+
+            <div class="grid-2">
+              <div style="background:#fff; border:1px solid #c7d2fe; padding:14px; border-radius:14px;">
+                <div style="font-size:10px; font-weight:800; color:#4338ca; text-transform:uppercase;">Overall Accommodation In-Charge</div>
+                <div style="font-size:16px; font-weight:800; color:#0f172a; margin-top:2px;">Rohit Kumar</div>
+                <div style="font-size:12px; color:#64748b;">Master Wing &amp; Allotment Authority</div>
+              </div>
+              <div style="background:#fdf2f8; border:1px solid #f9a8d4; padding:14px; border-radius:14px;">
+                <div style="font-size:10px; font-weight:800; color:#be185d; text-transform:uppercase;">Accommodation Helpline</div>
+                <div style="font-size:16px; font-weight:800; color:#0f172a; margin-top:2px;">Vishnu Kumar Rai</div>
+                <div style="font-size:12px; font-weight:800; color:#9d174d;">Help No: 9793421682</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align:center;">
+            <div class="card" style="margin-bottom:0; border:2px solid #fbcfe8;">
+              <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Gymnastics Emblem" style="width:150px; height:150px; border-radius:50%; border:4px solid #fdf2f8; object-fit:contain; margin:0 auto 14px;" />
+              <h3 style="font-size:22px; font-weight:800;">UP State Championship 2026</h3>
+              <p style="font-size:11px; font-weight:800; color:#db2777; text-transform:uppercase; letter-spacing:1px; margin-top:4px;">
+                Official Hospitality &amp; Room Allotment
+              </p>
+              <div style="margin-top:12px;">
+                <span class="badge-nsa">Powered by NSA Shooting</span>
+              </div>
+              <div class="grid-2" style="margin-top:18px; text-align:left;">
+                <div class="box-male" style="padding:12px;">
+                  <div style="font-size:12px; font-weight:800; color:#1e1b4b;">Male Wing Tracking</div>
+                  <div style="font-size:11px; color:#4338ca;">Separate Boys &amp; Male Staff beds</div>
+                </div>
+                <div class="box-female-pink" style="padding:12px;">
+                  <div style="font-size:12px; font-weight:800; color:#831843;">Female Pink Wing</div>
+                  <div style="font-size:11px; color:#be185d;">Dedicated Girls &amp; Female Staff beds</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== PAGE 2: LOGIN PORTAL (STRICT PRIVATE PIN FOR COACHES/OFFICIALS) ==================== -->
+  <section id="viewLogin" class="view-section no-print">
+    <div class="container" style="max-width:480px;">
+      <div class="card">
+        <div style="text-align:center; margin-bottom:18px;">
+          <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" style="width:80px; height:80px; border-radius:50%; border:2px solid #f9a8d4; padding:2px; object-fit:contain;" />
+          <h2 style="font-size:22px; font-weight:800; margin-top:10px;">Portal Authentication</h2>
+          <p style="font-size:11px; font-weight:800; color:#4338ca; text-transform:uppercase;">Select Your Role to Continue</p>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:6px; background:#f1f5f9; padding:6px; border-radius:12px; margin-bottom:18px;">
+          <button type="button" id="tabBtnCoach" onclick="selectRoleTab('coach')" style="padding:9px; font-size:11px; background:#fff; color:#1e1b4b;">District Coach</button>
+          <button type="button" id="tabBtnOfficial" onclick="selectRoleTab('official')" style="padding:9px; font-size:11px; background:transparent; color:#475569;">Judge / Official</button>
+          <button type="button" id="tabBtnAdmin" onclick="selectRoleTab('admin')" style="padding:9px; font-size:11px; background:transparent; color:#475569;">Admin</button>
+        </div>
+
+        <form onsubmit="submitLoginForm(event)">
+          <!-- COACH LOGIN FIELDS (Private per Coach Mobile + Secret PIN) -->
+          <div id="fieldCoachDistrict" style="margin-bottom:14px;">
+            <div style="margin-bottom:12px;">
+              <label>Select Your District (75 UP Districts)</label>
+              <select id="inputLoginDistrict"></select>
+            </div>
+            <div style="margin-bottom:12px;">
+              <label>Coach Full Name</label>
+              <input type="text" id="inputCoachLoginName" placeholder="Enter your full name" />
+            </div>
+            <div>
+              <label>Coach Personal Mobile Number (Your Private Login ID)</label>
+              <input type="tel" id="inputCoachLoginMobile" placeholder="10-digit mobile number" maxlength="10" />
+            </div>
+          </div>
+
+          <!-- OFFICIAL LOGIN FIELDS -->
+          <div id="fieldOfficialInfo" style="display:none; margin-bottom:14px;">
+            <div style="margin-bottom:12px;">
+              <label>Judge / Official Full Name</label>
+              <input type="text" id="inputOfficialName" placeholder="Enter your full name" />
+            </div>
+            <div>
+              <label>Mobile Number (Your Private Login ID)</label>
+              <input type="tel" id="inputOfficialMobile" placeholder="10-digit mobile number" maxlength="10" />
+            </div>
+          </div>
+
+          <!-- ADMIN LOGIN FIELDS -->
+          <div id="fieldAdminUser" style="display:none; margin-bottom:14px;">
+            <label>Administrator ID</label>
+            <input type="text" value="admin" readonly />
+          </div>
+
+          <div style="margin-bottom:18px;">
+            <label id="lblPasswordInput">Create / Enter Your Personal 4-Digit Secret PIN</label>
+            <input type="password" id="inputLoginPassword" placeholder="Enter secret PIN or password" required />
+            <div id="pinPrivacyNote" style="font-size:11px; color:#64748b; margin-top:5px;">
+              Your Mobile Number + Secret PIN locks your entries so no other coach can ever view your data.
+            </div>
+          </div>
+
+          <button type="submit" class="btn-indigo" style="width:100%; padding:13px;">Sign In to Private Portal</button>
+        </form>
+
+        <div style="margin-top:18px; padding-top:14px; border-top:1px solid #e2e8f0; text-align:center; font-size:12px; color:#64748b;">
+          <div>Overall In-Charge: <strong style="color:#0f172a;">Rohit Kumar</strong></div>
+          <div style="color:#be185d; font-weight:700; margin-top:2px;">Helpline: Vishnu Kumar Rai (9793421682)</div>
+          <div style="font-size:11px; font-weight:800; color:#312e81; margin-top:6px;">Powered by NSA Shooting</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 3: DISTRICT COACH PORTAL (STRICTLY PRIVATE TO LOGGED-IN COACH) ==================== -->
+  <section id="viewCoachPortal" class="view-section no-print">
+    <div class="container">
+      <div class="card" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" class="logo-circle" />
+          <div>
+            <span id="badgeCoachDistrict" class="pill pill-approved">District Coach</span>
+            <h2 style="font-size:22px; font-weight:800; margin-top:4px;">District Team Accommodation Portal</h2>
+            <p style="font-size:12px; color:#64748b;">Strict Private View &bull; Only teams submitted with your Mobile &amp; PIN are visible here (Max 4 Teams per District)</p>
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <span id="badgeCoachQuota" class="pill pill-pending" style="font-size:12px; padding:8px 14px;">District Teams Applied: 0 / 4</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:4px;">Submit District Team Accommodation Request</h3>
+        <p style="font-size:12px; color:#64748b; margin-bottom:18px;">Select your Team Number, Check-In &amp; Check-Out Stay Dates, and separate Male &amp; Female (Pink) bed counts.</p>
+
+        <form onsubmit="handleCoachSubmit(event)">
+          <div class="grid-5" style="margin-bottom:18px;">
+            <div>
+              <label>Select Team No. (Max 4)</label>
+              <select id="cTeamNo" required>
+                <option value="Team 1">Team 1</option>
+                <option value="Team 2">Team 2</option>
+                <option value="Team 3">Team 3</option>
+                <option value="Team 4">Team 4</option>
+              </select>
+            </div>
+            <div>
+              <label>Coach / Manager Name</label>
+              <input type="text" id="cCoachName" required placeholder="Enter Coach Name" />
+            </div>
+            <div>
+              <label>Coach Mobile Number</label>
+              <input type="tel" id="cCoachMobile" required placeholder="10-digit Mobile No." />
+            </div>
+            <div>
+              <label style="color:#4338ca;">Stay From (Check-In Date)</label>
+              <input type="date" id="cCheckIn" required />
+            </div>
+            <div>
+              <label style="color:#be185d;">Stay To (Check-Out Date)</label>
+              <input type="date" id="cCheckOut" required />
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom:18px;">
+            <div class="box-male">
+              <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:12px; font-weight:800; color:#1e1b4b;">
+                <span>MALE CONTINGENT DETAILS</span>
+                <span>INDIGO WING</span>
+              </div>
+              <div class="grid-2">
+                <div>
+                  <label>Male Players (Boys)</label>
+                  <input type="number" id="cMalePlayers" value="0" min="0" required oninput="updateCoachTotals()" />
+                </div>
+                <div>
+                  <label>Male Coach / Staff</label>
+                  <input type="number" id="cMaleStaff" value="0" min="0" required oninput="updateCoachTotals()" />
+                </div>
+              </div>
+              <div style="margin-top:12px; font-size:13px; font-weight:800; color:#1e1b4b;">
+                Total Male Beds: <span id="lblCoachMaleTotal">0</span>
+              </div>
+            </div>
+
+            <div class="box-female-pink">
+              <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:12px; font-weight:800; color:#831843;">
+                <span>FEMALE CONTINGENT DETAILS (PINK COLUMN)</span>
+                <span>PINK WING</span>
+              </div>
+              <div class="grid-2">
+                <div>
+                  <label style="color:#831843;">Female Players (Girls)</label>
+                  <input type="number" id="cFemalePlayers" value="0" min="0" required oninput="updateCoachTotals()" />
+                </div>
+                <div>
+                  <label style="color:#831843;">Female Coach / Staff</label>
+                  <input type="number" id="cFemaleStaff" value="0" min="0" required oninput="updateCoachTotals()" />
+                </div>
+              </div>
+              <div style="margin-top:12px; font-size:13px; font-weight:800; color:#831843;">
+                Total Female Pink Beds: <span id="lblCoachFemaleTotal">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+            <div style="font-size:14px; font-weight:800;">
+              Combined Total Beds Required: <span id="lblCoachGrandTotal" style="color:#4338ca; font-size:18px;">0</span>
+            </div>
+            <button type="submit" id="btnCoachSubmitEntry" class="btn-indigo">Submit Team Request to Admin Desk</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:17px; font-weight:800; margin-bottom:14px;">Your Private Submitted Team Applications</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Team No., Coach &amp; Stay Dates</th>
+                <th class="col-male">Male Beds &amp; Allotted Wing</th>
+                <th class="col-pink">Female Beds (Pink) &amp; Wing</th>
+                <th>Status</th>
+                <th style="text-align:right;">Boarding Pass &amp; Checkout NOC</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyCoachTeams"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 4: JUDGE & TECHNICAL OFFICIAL PORTAL ==================== -->
+  <section id="viewOfficialPortal" class="view-section no-print">
+    <div class="container">
+      <div class="card" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px; border-color:#f9a8d4;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" class="logo-circle" />
+          <div>
+            <span id="badgeOfficialUser" class="pill" style="background:#fce7f3; color:#9d174d;">Judge / Official</span>
+            <h2 style="font-size:22px; font-weight:800; margin-top:4px;">Judges &amp; Technical Officials Portal</h2>
+            <p style="font-size:12px; color:#64748b;">Strict Private View &bull; Only your own personal accommodation requests are visible here</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:14px;">Submit Judge / Official Accommodation Request</h3>
+        <form onsubmit="handleOfficialSubmit(event)">
+          <div class="grid-4" style="margin-bottom:18px;">
+            <div>
+              <label>Designation / Role</label>
+              <select id="oRole">
+                <option value="National Judge">National Judge</option>
+                <option value="State Judge">State Judge</option>
+                <option value="Competition Jury">Competition Jury</option>
+                <option value="Technical Official">Technical Official</option>
+              </select>
+            </div>
+            <div>
+              <label>Home District / City</label>
+              <input type="text" id="oCity" required placeholder="Enter City" />
+            </div>
+            <div>
+              <label style="color:#4338ca;">Stay From (Check-In Date)</label>
+              <input type="date" id="oDateIn" required />
+            </div>
+            <div>
+              <label style="color:#be185d;">Stay To (Check-Out Date)</label>
+              <input type="date" id="oDateOut" required />
+            </div>
+          </div>
+
+          <div class="grid-2" style="margin-bottom:18px;">
+            <div class="box-male">
+              <label>Male Official Beds Required</label>
+              <input type="number" id="oMaleBeds" value="0" min="0" required />
+            </div>
+            <div class="box-female-pink">
+              <label style="color:#831843;">Female Official Beds Required (Pink Column)</label>
+              <input type="number" id="oFemaleBeds" value="0" min="0" required />
+            </div>
+          </div>
+
+          <div style="text-align:right;">
+            <button type="submit" class="btn-pink">Submit Official Request to Admin Desk</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:17px; font-weight:800; margin-bottom:14px;">Your Personal Accommodation Status</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Official Name, Role &amp; Stay Dates</th>
+                <th class="col-male">Male Wing Allotment</th>
+                <th class="col-pink">Female Pink Wing Allotment</th>
+                <th>Status</th>
+                <th style="text-align:right;">Boarding Pass &amp; Checkout NOC</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyOfficialSelf"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 5: ADMIN MASTER CONTROL DESK ==================== -->
+  <section id="viewAdminPortal" class="view-section no-print">
+    <div class="container">
+      <div class="card" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" class="logo-circle" />
+          <div>
+            <span class="pill" style="background:#1e1b4b; color:#fff;">Master Administrator</span>
+            <h2 style="font-size:22px; font-weight:800; margin-top:4px;">Overall Accommodation In-Charge: Rohit Kumar</h2>
+            <p style="font-size:12px; color:#64748b;">Helpline Coordinator: <strong>Vishnu Kumar Rai (9793421682)</strong> &bull; Powered by NSA Shooting</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button type="button" class="btn-gold" onclick="openFacilityModal()">+ Add Classroom / Wing</button>
+          <button type="button" class="btn-outline btn-sm" onclick="openPassModal()">Change Admin Password</button>
+        </div>
+      </div>
+
+      <!-- AUTOMATIC LIVE CLASSROOM SLIDESHOW -->
+      <div class="slideshow-banner">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.18); padding-bottom:10px; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+          <div style="font-size:12px; font-weight:800; color:#fbbf24; text-transform:uppercase; letter-spacing:1px;">
+            &#9679; Automatic Live Classroom &amp; Wing Slideshow
+          </div>
+          <div style="display:flex; gap:6px;">
+            <button type="button" class="btn-sm" style="background:#3730a3; color:#fff;" onclick="changeSlide(-1)">Prev</button>
+            <button type="button" class="btn-sm" id="btnPauseSlide" style="background:#f59e0b; color:#000;" onclick="toggleSlidePause()">Pause</button>
+            <button type="button" class="btn-sm" style="background:#3730a3; color:#fff;" onclick="changeSlide(1)">Next</button>
+          </div>
+        </div>
+        <div id="slideshowContent"></div>
+      </div>
+
+      <!-- ALL CLASSROOMS & WINGS GRID -->
+      <h3 style="font-size:18px; font-weight:800; margin-bottom:12px;">All Classrooms &amp; Hostels Live Occupancy (Male &amp; Female Pink Wings)</h3>
+      <div id="gridAdminFacilities" class="grid-4" style="margin-bottom:26px;"></div>
+
+      <!-- ALL DISTRICT TEAMS TABLE (WITH STAY DATES & DELETE BUTTON) -->
+      <div class="card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:8px;">
+          <h3 style="font-size:18px; font-weight:800;">All District Team Applications</h3>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>District, Team No. &amp; Stay Dates</th>
+                <th class="col-male">Male Beds &amp; Allotted Wing</th>
+                <th class="col-pink">Female Beds (Pink) &amp; Wing</th>
+                <th>Status</th>
+                <th style="text-align:right;">Admin Actions (Approve / Checkout NOC / Delete)</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyAdminTeams"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ALL OFFICIALS TABLE (WITH STAY DATES & DELETE BUTTON) -->
+      <div class="card">
+        <h3 style="font-size:18px; font-weight:800; margin-bottom:14px;">Judges &amp; Technical Officials Applications</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Official Name, Mobile &amp; Stay Dates</th>
+                <th class="col-male">Male Beds &amp; Wing</th>
+                <th class="col-pink">Female Beds (Pink) &amp; Wing</th>
+                <th>Status</th>
+                <th style="text-align:right;">Admin Actions (Approve / Checkout NOC / Delete)</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyAdminOfficials"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PAGE 6: FULL-SCREEN OFFICIAL CERTIFICATE (PRINT & BACK) ==================== -->
+  <section id="viewCertificate" class="view-section">
+    <div class="container">
+      <div class="card no-print" style="max-width:860px; margin:0 auto 18px; padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <button type="button" class="btn-outline" onclick="returnFromCertificate()">&larr; Back to Portal</button>
+        <button type="button" class="btn-indigo" onclick="window.print()">Print Official Document</button>
+      </div>
+
+      <div class="cert-sheet">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #1e1b4b; padding-bottom:16px; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+          <div style="display:flex; align-items:center; gap:14px;">
+            <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" style="width:74px; height:74px; border-radius:50%; border:2px solid #f9a8d4; object-fit:contain;" />
+            <div>
+              <div style="font-size:11px; font-weight:800; color:#be185d; text-transform:uppercase;">Uttar Pradesh Gymnastics Association</div>
+              <h2 style="font-size:21px; font-weight:800; color:#0f172a;">UP STATE GYMNASTICS CHAMPIONSHIP 2026</h2>
+              <div style="font-size:12px; font-weight:700; color:#312e81;">Official Accommodation Directorate &bull; Powered by NSA Shooting</div>
+            </div>
+          </div>
+          <div style="text-align:right;">
+            <div id="certDocTitle" style="background:#1e1b4b; color:#fff; padding:6px 12px; border-radius:8px; font-size:11px; font-weight:800; text-transform:uppercase;">
+              OFFICIAL BOARDING PASS
+            </div>
+            <div id="certDocSerial" style="font-size:11px; color:#64748b; margin-top:4px; font-family:monospace;">SERIAL: #UPGA-2026</div>
+          </div>
+        </div>
+
+        <div id="certBodyArea" style="margin-bottom:24px;"></div>
+
+        <div class="grid-3" style="border-top:2px solid #cbd5e1; padding-top:18px; align-items:end; font-size:12px;">
+          <div>
+            <div style="font-weight:800; text-transform:uppercase;">Accommodation Helpline</div>
+            <div style="font-weight:800; color:#be185d;">Vishnu Kumar Rai</div>
+            <div>Contact: 9793421682</div>
+          </div>
+          <div style="text-align:center;">
+            <span style="display:inline-block; border:2px solid #059669; color:#065f46; padding:4px 12px; border-radius:999px; font-size:10px; font-weight:800;">
+              DIGITALLY VERIFIED SEAL
+            </span>
+          </div>
+          <div style="text-align:right;">
+            <div style="border-bottom:1px solid #64748b; width:160px; margin-left:auto; height:26px; margin-bottom:4px;"></div>
+            <div style="font-weight:800; text-transform:uppercase;">Rohit Kumar</div>
+            <div style="font-size:11px; color:#64748b;">Overall Accommodation In-Charge</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MODAL 1: APPROVE & ALLOT WINGS ==================== -->
+  <div id="modalAllot" class="modal-backdrop no-print">
+    <div class="modal-box">
+      <h3 style="font-size:18px; font-weight:800;">Approve &amp; Allot Separate Male / Female Wings</h3>
+      <p id="modalAllotInfo" style="font-size:12px; color:#64748b; margin:4px 0 16px;"></p>
+
+      <form onsubmit="saveAdminAllotment(event)">
+        <input type="hidden" id="allotItemId" />
+        <input type="hidden" id="allotItemCategory" />
+
+        <div class="box-male" style="margin-bottom:14px;">
+          <label>Select Male Classroom / Wing</label>
+          <select id="selAllotMaleWing" style="margin-bottom:8px;"></select>
+          <input type="text" id="inpAllotMaleRef" placeholder="Male Bed / Room Ref (e.g. Beds 1-6)" />
+        </div>
+
+        <div class="box-female-pink" style="margin-bottom:18px;">
+          <label style="color:#831843;">Select Female Pink Classroom / Wing</label>
+          <select id="selAllotFemaleWing" style="margin-bottom:8px;"></select>
+          <input type="text" id="inpAllotFemaleRef" placeholder="Female Bed / Room Ref (e.g. Pink Beds 1-5)" />
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn-outline btn-sm" onclick="closeModal('modalAllot')">Cancel</button>
+          <button type="submit" class="btn-indigo btn-sm">Approve &amp; Issue Boarding Pass</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: ADD / EDIT CLASSROOM ==================== -->
+  <div id="modalFacility" class="modal-backdrop no-print">
+    <div class="modal-box">
+      <h3 id="modalFacilityHeading" style="font-size:18px; font-weight:800; margin-bottom:14px;">Add / Edit Classroom or Wing</h3>
+      <form onsubmit="saveFacilityItem(event)">
+        <input type="hidden" id="facEditId" />
+        <div style="margin-bottom:12px;">
+          <label>Classroom / Hostel Name</label>
+          <input type="text" id="facName" required placeholder="e.g. Classroom 105 (Girls Pink Wing)" />
+        </div>
+        <div class="grid-2" style="margin-bottom:16px;">
+          <div>
+            <label>Wing Gender Category</label>
+            <select id="facGender">
+              <option value="Male Wing">Male Wing (Indigo)</option>
+              <option value="Female Pink Wing">Female Pink Wing</option>
+            </select>
+          </div>
+          <div>
+            <label>Total Bed Capacity</label>
+            <input type="number" id="facCap" value="30" min="1" required />
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn-outline btn-sm" onclick="closeModal('modalFacility')">Cancel</button>
+          <button type="submit" class="btn-indigo btn-sm">Save Classroom</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 3: CHANGE ADMIN PASSWORD ==================== -->
+  <div id="modalPassword" class="modal-backdrop no-print">
+    <div class="modal-box">
+      <h3 style="font-size:18px; font-weight:800; margin-bottom:14px;">Change Master Admin Password</h3>
+      <form onsubmit="saveNewPassword(event)">
+        <div style="margin-bottom:16px;">
+          <label>New Admin Password</label>
+          <input type="password" id="inpNewPass" required placeholder="Enter new admin password" />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:8px;">
+          <button type="button" class="btn-outline btn-sm" onclick="closeModal('modalPassword')">Cancel</button>
+          <button type="submit" class="btn-indigo btn-sm">Update Admin Password</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="no-print" style="background:#fff; border-top:1px solid #e2e8f0; padding:18px 16px; margin-top:auto; font-size:12px; color:#64748b;">
+    <div class="container" style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px;">
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <img src="gym logo.jpg" onerror="imgFallback(this)" alt="Logo" style="width:28px; height:28px; border-radius:50%; object-fit:contain;" />
+        <strong style="color:#0f172a;">UP State Gymnastics Championship 2026 &bull; Overall In-Charge: Rohit Kumar</strong>
+        <span class="badge-nsa" style="font-size:10px; padding:2px 10px;">Powered by NSA Shooting</span>
+      </div>
+      <div style="color:#be185d; font-weight:800;">
+        Accommodation Helpline: Vishnu Kumar Rai (9793421682)
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MULTI-DEVICE CLOUD ENGINE + STRICT PRIVACY JS ==================== -->
+  <script>
+    var GYMNAST_ICON_DATA = "data:image/svg+xml;utf8," + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">' +
+      '<defs><linearGradient id="g" x1="0%" y1="100%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#06b6d4"/><stop offset="35%" stop-color="#4f46e5"/>' +
+      '<stop offset="70%" stop-color="#ec4899"/><stop offset="100%" stop-color="#f59e0b"/>' +
+      '</linearGradient></defs>' +
+      '<circle cx="120" cy="120" r="112" fill="#ffffff" stroke="url(#g)" stroke-width="10"/>' +
+      '<circle cx="75" cy="52" r="6" fill="#ec4899"/><circle cx="172" cy="58" r="5" fill="#f59e0b"/>' +
+      '<circle cx="184" cy="115" r="6" fill="#06b6d4"/><circle cx="68" cy="160" r="5" fill="#8b5cf6"/>' +
+      '<circle cx="122" cy="74" r="14" fill="url(#g)"/>' +
+      '<path d="M88 30 Q95 58 112 82 L102 118 L48 195 L62 202 L118 134 L198 76 L190 65 L128 106 L124 84 Q152 64 176 72 L180 62 Q148 50 116 72 Q98 50 98 26 Z" fill="url(#g)"/>' +
+      '</svg>'
+    );
+
+    function imgFallback(el) {
+      if (el) {
+        el.onerror = null;
+        el.src = GYMNAST_ICON_DATA;
+      }
+    }
+
+    var DISTRICTS = [
+      "Agra", "Aligarh", "Ambedkar Nagar", "Amethi", "Amroha", "Auraiya", "Ayodhya", "Azamgarh", "Baghpat", "Bahraich",
+      "Ballia", "Balrampur", "Banda", "Barabanki", "Bareilly", "Basti", "Bhadohi", "Bijnor", "Budaun", "Bulandshahr",
+      "Chandauli", "Chitrakoot", "Deoria", "Etah", "Etawah", "Farrukhabad", "Fatehpur", "Firozabad", "Gautam Buddha Nagar", "Ghaziabad",
+      "Ghazipur", "Gonda", "Gorakhpur", "Hamirpur", "Hapur", "Hardoi", "Hathras", "Jalaun", "Jaunpur", "Jhansi",
+      "Kannauj", "Kanpur Dehat", "Kanpur Nagar", "Kasganj", "Kaushambi", "Kushinagar", "Lakhimpur Kheri", "Lalitpur", "Lucknow", "Maharajganj",
+      "Mahoba", "Mainpuri", "Mathura", "Mau", "Meerut", "Mirzapur", "Moradabad", "Muzaffarnagar", "Pilibhit", "Pratapgarh",
+      "Prayagraj", "Raebareli", "Rampur", "Saharanpur", "Sambhal", "Sant Kabir Nagar", "Shahjahanpur", "Shamli", "Shravasti", "Siddharthnagar",
+      "Sitapur", "Sonbhadra", "Sultanpur", "Unnao", "Varanasi"
+    ];
+
+    var DEFAULT_FAC = [
+      { id: 'f1', name: 'Classroom 101 (Boys Wing)', gender: 'Male Wing', capacity: 30 },
+      { id: 'f2', name: 'Classroom 102 (Boys Wing)', gender: 'Male Wing', capacity: 30 },
+      { id: 'f3', name: 'Classroom 103 (Girls Pink Wing)', gender: 'Female Pink Wing', capacity: 30 },
+      { id: 'f4', name: 'Classroom 104 (Girls Pink Wing)', gender: 'Female Pink Wing', capacity: 30 },
+      { id: 'f5', name: 'Male Hostel Wing A', gender: 'Male Wing', capacity: 50 },
+      { id: 'f6', name: 'Female Pink Hostel Wing B', gender: 'Female Pink Wing', capacity: 50 }
+    ];
+
+    // Live Multi-Endpoint Redundant Cloud Sync (Works across all mobile networks and PCs)
+    var CLOUD_ENDPOINTS = [
+      'https://jsonblob.com/api/jsonBlob/1344359268422090752',
+      'https://kvdb.io/VAtHCpWg7xj3HAmMHDSMhi/upga_nsa_2026_master_v20'
+    ];
+
+    function loadLocal(k, def) {
+      try {
+        var v = localStorage.getItem(k);
+        return v ? JSON.parse(v) : def;
+      } catch (e) { return def; }
+    }
+
+    var facilities = loadLocal('upga_fac_v20', DEFAULT_FAC);
+    var teams = loadLocal('upga_teams_v20', []);
+    var officials = loadLocal('upga_off_v20', []);
+    var deletedIds = loadLocal('upga_del_v20', []);
+    var passwords = loadLocal('upga_pass_v20', { admin: 'admin123' });
+
+    var currentUser = null;
+    var activeLoginRole = 'coach';
+    var previousPage = 'viewHome';
+    var curSlide = 0;
+    var slidePaused = false;
+    var isSyncing = false;
+
+    function saveLocalOnly() {
+      try {
+        localStorage.setItem('upga_fac_v20', JSON.stringify(facilities));
+        localStorage.setItem('upga_teams_v20', JSON.stringify(teams));
+        localStorage.setItem('upga_off_v20', JSON.stringify(officials));
+        localStorage.setItem('upga_del_v20', JSON.stringify(deletedIds));
+        localStorage.setItem('upga_pass_v20', JSON.stringify(passwords));
+      } catch (e) {}
+    }
+
+    // Smart Merge Function: Combines entries from multiple devices so no coach entry is ever lost
+    function mergeById(localArr, remoteArr) {
+      var map = {};
+      var i, item;
+      if (Array.isArray(remoteArr)) {
+        for (i = 0; i < remoteArr.length; i++) {
+          item = remoteArr[i];
+          if (item && item.id && deletedIds.indexOf(item.id) === -1) {
+            map[item.id] = item;
+          }
+        }
+      }
+      if (Array.isArray(localArr)) {
+        for (i = 0; i < localArr.length; i++) {
+          item = localArr[i];
+          if (item && item.id && deletedIds.indexOf(item.id) === -1) {
+            if (!map[item.id] || (item.updatedAt || 0) >= (map[item.id].updatedAt || 0)) {
+              map[item.id] = item;
+            }
+          }
+        }
+      }
+      var result = [];
+      for (var k in map) {
+        if (map.hasOwnProperty(k)) result.push(map[k]);
+      }
+      result.sort(function(a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+      return result;
+    }
+
+    function saveStore() {
+      saveLocalOnly();
+      syncAndPushCloud();
+    }
+
+    function syncAndPushCloud() {
+
+      // First pull remote data, merge with local, then push back so no device overwrites another
+      fetch(CLOUD_ENDPOINTS[1] + '?t=' + new Date().getTime())
+        .then(function(r) { return r.ok ? r.json() : null; })
+        .catch(function() { return null; })
+        .then(function(remoteData) {
+          if (remoteData && typeof remoteData === 'object') {
+            if (Array.isArray(remoteData.deletedIds)) {
+              for (var d = 0; d < remoteData.deletedIds.length; d++) {
+                if (deletedIds.indexOf(remoteData.deletedIds[d]) === -1) {
+                  deletedIds.push(remoteData.deletedIds[d]);
+                }
+              }
+            }
+            teams = mergeById(teams, remoteData.teams || []);
+            officials = mergeById(officials, remoteData.officials || []);
+            if (Array.isArray(remoteData.facilities) && remoteData.facilities.length > 0 && (!currentUser || currentUser.role !== 'admin')) {
+              facilities = remoteData.facilities;
+            }
+          }
+          saveLocalOnly();
+          refreshCurrentActiveView();
+
+          var payload = JSON.stringify({
+            updatedAt: new Date().getTime(),
+            facilities: facilities,
+            teams: teams,
+            officials: officials,
+            deletedIds: deletedIds,
+            passwords: passwords
+          });
+
+          // KVdb creates or updates a key with POST.
+          return fetch(CLOUD_ENDPOINTS[1], {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: payload
+          }).then(function(response) {
+            if (!response.ok) {
+              throw new Error('Cloud write failed: HTTP ' + response.status);
+            }
+            return response;
+          });
+        })
+        .then(function() {
+        })
+        .catch(function() {
+        });
+    }
+
+    function syncFromCloud(showAlert) {
+      if (isSyncing) return;
+      isSyncing = true;
+      fetch(CLOUD_ENDPOINTS[1] + '?t=' + new Date().getTime())
+        .then(function(res) {
+          // A 404 can mean the new bucket has not had this key created yet.
+          if (res.status === 404) return { __cloudKeyMissing: true };
+          if (!res.ok) throw new Error('Cloud read failed: HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function(remoteData) {
+          if (remoteData && remoteData.__cloudKeyMissing) {
+            var initialPayload = JSON.stringify({
+              updatedAt: new Date().getTime(),
+              facilities: facilities,
+              teams: teams,
+              officials: officials,
+              deletedIds: deletedIds,
+              passwords: passwords
+            });
+            return fetch(CLOUD_ENDPOINTS[1], {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: initialPayload
+            }).then(function(writeRes) {
+              if (!writeRes.ok) throw new Error('Cloud initialization failed: HTTP ' + writeRes.status);
+              saveLocalOnly();
+              refreshCurrentActiveView();
+              
+            });
+          }
+          if (remoteData && typeof remoteData === 'object') {
+            if (Array.isArray(remoteData.deletedIds)) {
+              for (var d = 0; d < remoteData.deletedIds.length; d++) {
+                if (deletedIds.indexOf(remoteData.deletedIds[d]) === -1) {
+                  deletedIds.push(remoteData.deletedIds[d]);
+                }
+              }
+            }
+            teams = mergeById(teams, remoteData.teams || []);
+            officials = mergeById(officials, remoteData.officials || []);
+            if (Array.isArray(remoteData.facilities) && remoteData.facilities.length > 0) {
+              facilities = remoteData.facilities;
+            }
+            if (remoteData.passwords && remoteData.passwords.admin) {
+              passwords.admin = remoteData.passwords.admin;
+            }
+            saveLocalOnly();
+            refreshCurrentActiveView();
+
+            // If this device has older local entries not present in the cloud, upload the merged result.
+            var mergedSnapshot = JSON.stringify({
+              facilities: facilities,
+              teams: teams,
+              officials: officials,
+              deletedIds: deletedIds,
+              passwords: passwords
+            });
+            var cloudSnapshot = JSON.stringify({
+              facilities: remoteData.facilities || [],
+              teams: remoteData.teams || [],
+              officials: remoteData.officials || [],
+              deletedIds: remoteData.deletedIds || [],
+              passwords: remoteData.passwords || {}
+            });
+            if (mergedSnapshot !== cloudSnapshot) {
+              var mergedPayload = JSON.stringify({
+                updatedAt: new Date().getTime(),
+                facilities: facilities,
+                teams: teams,
+                officials: officials,
+                deletedIds: deletedIds,
+                passwords: passwords
+              });
+              return fetch(CLOUD_ENDPOINTS[1], {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: mergedPayload
+              }).then(function(writeRes) {
+                if (!writeRes.ok) throw new Error('Cloud merge upload failed: HTTP ' + writeRes.status);
+                
+              });
+            }
+            
+          }
+        })
+        .catch(function(err) {
+          
+        })
+        .then(function() { isSyncing = false; }, function() { isSyncing = false; });
+    }
+
+    function refreshCurrentActiveView() {
+      if (previousPage === 'viewCoachPortal') renderCoachView();
+      if (previousPage === 'viewOfficialPortal') renderOfficialView();
+      if (previousPage === 'viewAdminPortal') renderAdminView();
+    }
+
+    // Automatic background sync every 4 seconds across all devices
+    setInterval(function() {
+      syncFromCloud(false);
+    }, 4000);
+
+    // Populate 75 UP Districts
+    var distSelect = document.getElementById('inputLoginDistrict');
+    if (distSelect) {
+      var dHtml = '';
+      for (var i = 0; i < DISTRICTS.length; i++) {
+        dHtml += '<option value="' + DISTRICTS[i] + '">' + DISTRICTS[i] + '</option>';
+      }
+      distSelect.innerHTML = dHtml;
+    }
+
+    // Set default dates to today & +3 days
+    function setDefaultDates() {
+      var today = new Date().toISOString().split('T')[0];
+      var next3 = new Date(new Date().getTime() + 3 * 86400000).toISOString().split('T')[0];
+      if (document.getElementById('cCheckIn')) document.getElementById('cCheckIn').value = today;
+      if (document.getElementById('cCheckOut')) document.getElementById('cCheckOut').value = next3;
+      if (document.getElementById('oDateIn')) document.getElementById('oDateIn').value = today;
+      if (document.getElementById('oDateOut')) document.getElementById('oDateOut').value = next3;
+    }
+    setDefaultDates();
+
+    function showPage(pageId) {
+      var pages = ['viewHome', 'viewLogin', 'viewCoachPortal', 'viewOfficialPortal', 'viewAdminPortal', 'viewCertificate'];
+      for (var i = 0; i < pages.length; i++) {
+        var el = document.getElementById(pages[i]);
+        if (el) el.className = 'view-section' + (pages[i] === 'viewCertificate' ? '' : ' no-print');
+      }
+      var target = document.getElementById(pageId);
+      if (target) target.className += ' active';
+
+      if (pageId !== 'viewCertificate' && pageId !== 'viewLogin') {
+        previousPage = pageId;
+      }
+      if (pageId === 'viewCoachPortal') renderCoachView();
+      if (pageId === 'viewOfficialPortal') renderOfficialView();
+      if (pageId === 'viewAdminPortal') renderAdminView();
+      window.scrollTo(0, 0);
+    }
+
+    function openLoginScreen(role) {
+      selectRoleTab(role);
+      showPage('viewLogin');
+    }
+
+    function selectRoleTab(role) {
+      activeLoginRole = role;
+      var bCoach = document.getElementById('tabBtnCoach');
+      var bOff = document.getElementById('tabBtnOfficial');
+      var bAdm = document.getElementById('tabBtnAdmin');
+
+      bCoach.style.background = 'transparent'; bCoach.style.color = '#475569';
+      bOff.style.background = 'transparent'; bOff.style.color = '#475569';
+      bAdm.style.background = 'transparent'; bAdm.style.color = '#475569';
+
+      document.getElementById('fieldCoachDistrict').style.display = 'none';
+      document.getElementById('fieldOfficialInfo').style.display = 'none';
+      document.getElementById('fieldAdminUser').style.display = 'none';
+
+      var lblPass = document.getElementById('lblPasswordInput');
+      var notePin = document.getElementById('pinPrivacyNote');
+
+      if (role === 'coach') {
+        bCoach.style.background = '#ffffff'; bCoach.style.color = '#1e1b4b';
+        document.getElementById('fieldCoachDistrict').style.display = 'block';
+        lblPass.innerText = 'Create / Enter Your Personal Secret PIN';
+        notePin.style.display = 'block';
+      } else if (role === 'official') {
+        bOff.style.background = '#db2777'; bOff.style.color = '#ffffff';
+        document.getElementById('fieldOfficialInfo').style.display = 'block';
+        lblPass.innerText = 'Create / Enter Your Personal Secret PIN';
+        notePin.style.display = 'block';
+      } else {
+        bAdm.style.background = '#1e1b4b'; bAdm.style.color = '#ffffff';
+        document.getElementById('fieldAdminUser').style.display = 'block';
+        lblPass.innerText = 'Master Administrator Password';
+        notePin.style.display = 'none';
+      }
+    }
+
+    function submitLoginForm(e) {
+      e.preventDefault();
+      var pass = document.getElementById('inputLoginPassword').value.trim();
+
+      if (activeLoginRole === 'coach') {
+        var d = document.getElementById('inputLoginDistrict').value;
+        var cName = document.getElementById('inputCoachLoginName').value.trim();
+        var cMob = document.getElementById('inputCoachLoginMobile').value.trim();
+        if (!cName || !cMob || cMob.length < 10) {
+          alert('Please enter your Full Name and valid 10-digit Mobile Number.');
+          return;
+        }
+        // Check if this mobile already has a different PIN in existing entries
+        for (var i = 0; i < teams.length; i++) {
+          if (teams[i].ownerMobile === cMob && teams[i].ownerPin && teams[i].ownerPin !== pass) {
+            alert('Incorrect Secret PIN for mobile number ' + cMob + '!');
+            return;
+          }
+        }
+        currentUser = {
+          role: 'coach',
+          district: d,
+          name: cName,
+          mobile: cMob,
+          pin: pass,
+          label: cName + ' (' + d + ')'
+        };
+        document.getElementById('cCoachName').value = cName;
+        document.getElementById('cCoachMobile').value = cMob;
+        refreshTopBar();
+        syncFromCloud(false);
+        showPage('viewCoachPortal');
+
+      } else if (activeLoginRole === 'official') {
+        var nm = document.getElementById('inputOfficialName').value.trim();
+        var mb = document.getElementById('inputOfficialMobile').value.trim();
+        if (!nm || !mb || mb.length < 10) {
+          alert('Please enter your Full Name and valid 10-digit Mobile Number.');
+          return;
+        }
+        for (var j = 0; j < officials.length; j++) {
+          if (officials[j].mobile === mb && officials[j].ownerPin && officials[j].ownerPin !== pass) {
+            alert('Incorrect Secret PIN for mobile number ' + mb + '!');
+            return;
+          }
+        }
+        currentUser = { role: 'official', name: nm, mobile: mb, pin: pass, label: nm };
+        refreshTopBar();
+        syncFromCloud(false);
+        showPage('viewOfficialPortal');
+
+      } else {
+        if (pass !== passwords.admin) {
+          alert('Invalid Administrator Password!');
+          return;
+        }
+        currentUser = { role: 'admin', label: 'Rohit Kumar (Admin)' };
+        refreshTopBar();
+        syncFromCloud(false);
+        showPage('viewAdminPortal');
+      }
+      document.getElementById('inputLoginPassword').value = '';
+    }
+
+    function refreshTopBar() {
+      var box = document.getElementById('topAuthButtons');
+      if (!currentUser) {
+        box.innerHTML = '<button type="button" class="btn-indigo" onclick="openLoginScreen(\'coach\')">Portal Login</button>';
+      } else {
+        var targetPage = currentUser.role === 'coach' ? 'viewCoachPortal' : (currentUser.role === 'official' ? 'viewOfficialPortal' : 'viewAdminPortal');
+        box.innerHTML =
+          '<button type="button" class="btn-outline btn-sm" onclick="showPage(\'' + targetPage + '\')">' + currentUser.label + '</button>' +
+          '<button type="button" class="btn-danger btn-sm" onclick="doLogout()">Logout</button>';
+      }
+    }
+
+    function doLogout() {
+      currentUser = null;
+      refreshTopBar();
+      showPage('viewHome');
+    }
+
+    function updateCoachTotals() {
+      var mp = parseInt(document.getElementById('cMalePlayers').value, 10) || 0;
+      var ms = parseInt(document.getElementById('cMaleStaff').value, 10) || 0;
+      var fp = parseInt(document.getElementById('cFemalePlayers').value, 10) || 0;
+      var fs = parseInt(document.getElementById('cFemaleStaff').value, 10) || 0;
+      document.getElementById('lblCoachMaleTotal').innerText = (mp + ms);
+      document.getElementById('lblCoachFemaleTotal').innerText = (fp + fs);
+      document.getElementById('lblCoachGrandTotal').innerText = (mp + ms + fp + fs);
+    }
+
+    function handleCoachSubmit(e) {
+      e.preventDefault();
+      if (!currentUser || currentUser.role !== 'coach') return;
+
+      var distTeams = teams.filter(function(t) { return t.district === currentUser.district; });
+      if (distTeams.length >= 4) {
+        alert('Maximum 4 teams already submitted for ' + currentUser.district + '!');
+        return;
+      }
+
+      var tNo = document.getElementById('cTeamNo').value;
+      for (var i = 0; i < distTeams.length; i++) {
+        if (distTeams[i].teamNo === tNo) {
+          alert(tNo + ' is already registered for ' + currentUser.district + '. Please choose another Team Number.');
+          return;
+        }
+      }
+
+      var checkIn = document.getElementById('cCheckIn').value;
+      var checkOut = document.getElementById('cCheckOut').value;
+      if (!checkIn || !checkOut) {
+        alert('Please select both Stay From (Check-In) and Stay To (Check-Out) dates.');
+        return;
+      }
+
+      var mp = parseInt(document.getElementById('cMalePlayers').value, 10) || 0;
+      var ms = parseInt(document.getElementById('cMaleStaff').value, 10) || 0;
+      var fp = parseInt(document.getElementById('cFemalePlayers').value, 10) || 0;
+      var fs = parseInt(document.getElementById('cFemaleStaff').value, 10) || 0;
+
+      if (mp + ms + fp + fs <= 0) {
+        alert('Please enter at least 1 Male or Female member.');
+        return;
+      }
+
+      var now = new Date().getTime();
+      teams.unshift({
+        id: 't_' + now + '_' + Math.floor(Math.random() * 1000),
+        createdAt: now,
+        updatedAt: now,
+        district: currentUser.district,
+        teamNo: tNo,
+        coach: document.getElementById('cCoachName').value.trim(),
+        mobile: document.getElementById('cCoachMobile').value.trim(),
+        ownerMobile: currentUser.mobile,
+        ownerPin: currentUser.pin,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        malePlayers: mp,
+        maleStaff: ms,
+        maleBeds: mp + ms,
+        maleWing: 'Pending Admin Allotment',
+        maleRef: '-',
+        femalePlayers: fp,
+        femaleStaff: fs,
+        femaleBeds: fp + fs,
+        femaleWing: 'Pending Admin Allotment',
+        femaleRef: '-',
+        status: 'Pending Approval'
+      });
+
+      saveStore();
+      renderCoachView();
+      alert(currentUser.district + ' (' + tNo + ') submitted successfully.');
+    }
+
+    // STRICT PRIVACY: Coach only sees entries matching their own Mobile & PIN
+    function renderCoachView() {
+      if (!currentUser || currentUser.role !== 'coach') return;
+      document.getElementById('badgeCoachDistrict').innerText = 'Coach: ' + currentUser.name + ' (' + currentUser.district + ')';
+
+      var allDistTeams = teams.filter(function(t) { return t.district === currentUser.district; });
+      document.getElementById('badgeCoachQuota').innerText = 'District Quota Used: ' + allDistTeams.length + ' / 4 Teams';
+
+      var myPrivateTeams = teams.filter(function(t) {
+        return t.district === currentUser.district &&
+               t.ownerMobile === currentUser.mobile &&
+               t.ownerPin === currentUser.pin;
+      });
+
+      var tbody = document.getElementById('tbodyCoachTeams');
+      if (myPrivateTeams.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#64748b; padding:24px;">No team requests submitted under your private Mobile &amp; PIN yet.</td></tr>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < myPrivateTeams.length; i++) {
+        var t = myPrivateTeams[i];
+        var pillClass = t.status === 'Checked-Out' ? 'pill-checkout' : (t.status === 'Approved' ? 'pill-approved' : 'pill-pending');
+        var btns = '<span style="font-size:11px; color:#92400e; font-weight:700;">Waiting Admin Approval</span>';
+
+        if (t.status === 'Approved') {
+          btns = '<button type="button" class="btn-indigo btn-sm" onclick="viewCertificate(\'' + t.id + '\', \'TEAM\', \'PASS\')">Print Boarding Pass</button>' +
+                 '<div style="font-size:10px; color:#64748b; margin-top:4px;">[Locked] NOC Unlocks After Admin Checkout</div>';
+        } else if (t.status === 'Checked-Out') {
+          btns = '<button type="button" class="btn-outline btn-sm" onclick="viewCertificate(\'' + t.id + '\', \'TEAM\', \'PASS\')">Boarding Pass</button> ' +
+                 '<button type="button" class="btn-emerald btn-sm" onclick="viewCertificate(\'' + t.id + '\', \'TEAM\', \'NOC\')">Print Checkout NOC</button>';
+        }
+
+        html += '<tr>' +
+          '<td><span class="pill pill-approved">' + t.teamNo + '</span><div style="font-weight:800; margin-top:4px;">' + t.coach + ' (' + t.mobile + ')</div>' +
+          '<div class="date-badge">Stay: ' + (t.checkIn || '-') + ' to ' + (t.checkOut || '-') + '</div></td>' +
+          '<td class="col-male"><strong>' + t.maleBeds + ' Male Beds</strong> (B:' + t.malePlayers + ', S:' + t.maleStaff + ')<div style="font-size:11px; margin-top:2px;">' + t.maleWing + ' (' + t.maleRef + ')</div></td>' +
+          '<td class="col-pink"><strong>' + t.femaleBeds + ' Female Beds</strong> (G:' + t.femalePlayers + ', S:' + t.femaleStaff + ')<div style="font-size:11px; margin-top:2px;">' + t.femaleWing + ' (' + t.femaleRef + ')</div></td>' +
+          '<td><span class="pill ' + pillClass + '">' + t.status + '</span></td>' +
+          '<td style="text-align:right;">' + btns + '</td>' +
+        '</tr>';
+      }
+      tbody.innerHTML = html;
+    }
+
+    function handleOfficialSubmit(e) {
+      e.preventDefault();
+      if (!currentUser || currentUser.role !== 'official') return;
+
+      var mb = parseInt(document.getElementById('oMaleBeds').value, 10) || 0;
+      var fb = parseInt(document.getElementById('oFemaleBeds').value, 10) || 0;
+      if (mb + fb <= 0) { alert('Please enter at least 1 bed.'); return; }
+
+      var dIn = document.getElementById('oDateIn').value;
+      var dOut = document.getElementById('oDateOut').value;
+      var now = new Date().getTime();
+
+      officials.unshift({
+        id: 'o_' + now + '_' + Math.floor(Math.random() * 1000),
+        createdAt: now,
+        updatedAt: now,
+        name: currentUser.name,
+        mobile: currentUser.mobile,
+        ownerPin: currentUser.pin,
+        role: document.getElementById('oRole').value,
+        city: document.getElementById('oCity').value.trim(),
+        checkIn: dIn,
+        checkOut: dOut,
+        maleBeds: mb,
+        maleWing: 'Pending Admin Allotment',
+        maleRef: '-',
+        femaleBeds: fb,
+        femaleWing: 'Pending Admin Allotment',
+        femaleRef: '-',
+        status: 'Pending Approval'
+      });
+
+      saveStore();
+      renderOfficialView();
+      alert('Official accommodation request submitted successfully.');
+    }
+
+    function renderOfficialView() {
+      if (!currentUser || currentUser.role !== 'official') return;
+      document.getElementById('badgeOfficialUser').innerText = currentUser.name + ' (' + currentUser.mobile + ')';
+      var myOff = officials.filter(function(o) {
+        return o.mobile === currentUser.mobile && (!o.ownerPin || o.ownerPin === currentUser.pin);
+      });
+      var tbody = document.getElementById('tbodyOfficialSelf');
+
+      if (myOff.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; color:#64748b; padding:24px;">No request submitted under your private Mobile &amp; PIN yet.</td></tr>';
+        return;
+      }
+
+      var html = '';
+      for (var i = 0; i < myOff.length; i++) {
+        var o = myOff[i];
+        var pillClass = o.status === 'Checked-Out' ? 'pill-checkout' : (o.status === 'Approved' ? 'pill-approved' : 'pill-pending');
+        var btns = '<span style="font-size:11px; color:#92400e; font-weight:700;">Waiting Admin Approval</span>';
+
+        if (o.status === 'Approved') {
+          btns = '<button type="button" class="btn-indigo btn-sm" onclick="viewCertificate(\'' + o.id + '\', \'OFFICIAL\', \'PASS\')">Print Boarding Pass</button>' +
+                 '<div style="font-size:10px; color:#64748b; margin-top:4px;">[Locked] NOC Unlocks After Admin Checkout</div>';
+        } else if (o.status === 'Checked-Out') {
+          btns = '<button type="button" class="btn-outline btn-sm" onclick="viewCertificate(\'' + o.id + '\', \'OFFICIAL\', \'PASS\')">Boarding Pass</button> ' +
+                 '<button type="button" class="btn-emerald btn-sm" onclick="viewCertificate(\'' + o.id + '\', \'OFFICIAL\', \'NOC\')">Print Checkout NOC</button>';
+        }
+
+        html += '<tr>' +
+          '<td><strong>' + o.name + '</strong><div style="font-size:11px; color:#64748b;">' + o.role + ' - ' + o.city + '</div>' +
+          '<div class="date-badge">Stay: ' + (o.checkIn || '-') + ' to ' + (o.checkOut || '-') + '</div></td>' +
+          '<td class="col-male"><strong>' + o.maleBeds + ' Male Bed(s)</strong><div style="font-size:11px;">' + o.maleWing + ' (' + o.maleRef + ')</div></td>' +
+          '<td class="col-pink"><strong>' + o.femaleBeds + ' Female Bed(s)</strong><div style="font-size:11px;">' + o.femaleWing + ' (' + o.femaleRef + ')</div></td>' +
+          '<td><span class="pill ' + pillClass + '">' + o.status + '</span></td>' +
+          '<td style="text-align:right;">' + btns + '</td>' +
+        '</tr>';
+      }
+      tbody.innerHTML = html;
+    }
+
+    function calcWingStats(wName, cap) {
+      var occ = 0;
+      var list = [];
+      for (var i = 0; i < teams.length; i++) {
+        var t = teams[i];
+        if (t.status === 'Approved') {
+          if (t.maleWing === wName) { occ += Number(t.maleBeds || 0); list.push(t.district + ' ' + t.teamNo + ' (M)'); }
+          if (t.femaleWing === wName) { occ += Number(t.femaleBeds || 0); list.push(t.district + ' ' + t.teamNo + ' (F)'); }
+        }
+      }
+      for (var j = 0; j < officials.length; j++) {
+        var o = officials[j];
+        if (o.status === 'Approved') {
+          if (o.maleWing === wName) { occ += Number(o.maleBeds || 0); list.push(o.name + ' (M)'); }
+          if (o.femaleWing === wName) { occ += Number(o.femaleBeds || 0); list.push(o.name + ' (F)'); }
+        }
+      }
+      return { occupied: occ, vacant: Math.max(0, cap - occ), list: list };
+    }
+
+    function renderSlideshow() {
+      var box = document.getElementById('slideshowContent');
+      if (!box || facilities.length === 0) return;
+      if (curSlide >= facilities.length) curSlide = 0;
+      var f = facilities[curSlide];
+      var st = calcWingStats(f.name, f.capacity);
+
+      box.innerHTML =
+        '<div class="grid-3" style="align-items:center;">' +
+          '<div>' +
+            '<span class="badge-gold" style="background:' + (f.gender === 'Female Pink Wing' ? '#ec4899' : '#6366f1') + '; color:#fff;">' + f.gender + '</span>' +
+            '<h4 style="font-size:20px; font-weight:800; margin-top:6px;">' + f.name + '</h4>' +
+            '<div style="font-size:11px; opacity:0.8;">Classroom Slide ' + (curSlide + 1) + ' of ' + facilities.length + '</div>' +
+          '</div>' +
+          '<div style="display:flex; gap:18px; background:rgba(255,255,255,0.1); padding:12px 18px; border-radius:14px; justify-content:space-around; text-align:center;">' +
+            '<div><div style="font-size:10px; opacity:0.8;">CAPACITY</div><div style="font-size:18px; font-weight:800;">' + f.capacity + '</div></div>' +
+            '<div><div style="font-size:10px; color:#fde68a;">OCCUPIED</div><div style="font-size:18px; font-weight:800; color:#fde68a;">' + st.occupied + '</div></div>' +
+            '<div><div style="font-size:10px; color:#6ee7b7;">VACANT BEDS</div><div style="font-size:18px; font-weight:800; color:#6ee7b7;">' + st.vacant + '</div></div>' +
+          '</div>' +
+          '<div style="font-size:12px;">' +
+            '<strong>Teams Staying (' + st.list.length + '):</strong>' +
+            '<div style="opacity:0.9; margin-top:4px;">' + (st.list.length ? st.list.join(', ') : 'No active contingent allotted') + '</div>' +
+          '</div>' +
+        '</div>';
+    }
+
+    function changeSlide(dir) {
+      if (facilities.length === 0) return;
+      curSlide = (curSlide + dir + facilities.length) % facilities.length;
+      renderSlideshow();
+    }
+
+    function toggleSlidePause() {
+      slidePaused = !slidePaused;
+      document.getElementById('btnPauseSlide').innerText = slidePaused ? 'Resume' : 'Pause';
+    }
+
+    setInterval(function() {
+      if (!slidePaused && previousPage === 'viewAdminPortal') {
+        changeSlide(1);
+      }
+    }, 3500);
+
+    function renderAdminView() {
+      renderSlideshow();
+
+      var gHtml = '';
+      for (var i = 0; i < facilities.length; i++) {
+        var f = facilities[i];
+        var st = calcWingStats(f.name, f.capacity);
+        var isPink = f.gender === 'Female Pink Wing';
+        gHtml +=
+          '<div class="card" style="margin-bottom:0; padding:18px; background:' + (isPink ? '#fdf2f8' : '#ffffff') + '; border-color:' + (isPink ? '#f9a8d4' : '#e2e8f0') + ';">' +
+            '<div style="display:flex; justify-content:space-between; align-items:center;">' +
+              '<span class="pill" style="background:' + (isPink ? '#db2777' : '#312e81') + '; color:#fff;">' + f.gender + '</span>' +
+              '<div style="display:flex; gap:4px;">' +
+                '<button type="button" class="btn-outline btn-sm" onclick="editFacility(\'' + f.id + '\')">Edit</button>' +
+                '<button type="button" class="btn-danger btn-sm" onclick="removeFacility(\'' + f.id + '\')">Delete</button>' +
+              '</div>' +
+            '</div>' +
+            '<h4 style="font-size:16px; font-weight:800; margin:10px 0;">' + f.name + '</h4>' +
+            '<div style="display:flex; justify-content:space-between; background:#fff; padding:10px; border-radius:10px; border:1px solid #e2e8f0; margin-bottom:8px; font-size:12px;">' +
+              '<span>Staying: <strong>' + st.list.length + '</strong></span>' +
+              '<span style="color:#059669; font-weight:800;">Vacant: ' + st.vacant + ' / ' + f.capacity + '</span>' +
+            '</div>' +
+            '<div style="font-size:11px; color:#475569;"><strong>Teams:</strong> ' + (st.list.length ? st.list.join(', ') : 'None') + '</div>' +
+          '</div>';
+      }
+      document.getElementById('gridAdminFacilities').innerHTML = gHtml;
+
+      var tHtml = '';
+      if (teams.length === 0) {
+        tHtml = '<tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;">No district team applications received yet.</td></tr>';
+      } else {
+        for (var k = 0; k < teams.length; k++) {
+          var t = teams[k];
+          var pCls = t.status === 'Checked-Out' ? 'pill-checkout' : (t.status === 'Approved' ? 'pill-approved' : 'pill-pending');
+          var checkoutBtn = t.status === 'Approved'
+            ? '<button type="button" class="btn-gold btn-sm" onclick="checkoutEntry(\'' + t.id + '\', \'TEAM\')">Checkout &amp; Unlock NOC</button> '
+            : '';
+          var nocBtn = t.status === 'Checked-Out'
+            ? '<button type="button" class="btn-emerald btn-sm" onclick="viewCertificate(\'' + t.id + '\', \'TEAM\', \'NOC\')">NOC</button> '
+            : '';
+
+          tHtml += '<tr>' +
+            '<td><strong>' + t.district + '</strong> <span class="pill pill-approved">' + t.teamNo + '</span>' +
+            '<div style="font-size:11px; color:#64748b; margin-top:2px;">Coach: ' + t.coach + ' (' + t.mobile + ')</div>' +
+            '<div class="date-badge">Stay: ' + (t.checkIn || '-') + ' to ' + (t.checkOut || '-') + '</div></td>' +
+            '<td class="col-male"><strong>' + t.maleBeds + ' Beds</strong> (B:' + t.malePlayers + ', S:' + t.maleStaff + ')<div style="font-size:11px;">' + t.maleWing + ' (' + t.maleRef + ')</div></td>' +
+            '<td class="col-pink"><strong>' + t.femaleBeds + ' Beds</strong> (G:' + t.femalePlayers + ', S:' + t.femaleStaff + ')<div style="font-size:11px;">' + t.femaleWing + ' (' + t.femaleRef + ')</div></td>' +
+            '<td><span class="pill ' + pCls + '">' + t.status + '</span></td>' +
+            '<td style="text-align:right; white-space:nowrap;">' +
+              '<button type="button" class="btn-indigo btn-sm" onclick="openAllotPopup(\'' + t.id + '\', \'TEAM\')">' + (t.status === 'Pending Approval' ? 'Approve &amp; Allot' : 'Edit Wings') + '</button> ' +
+              checkoutBtn +
+              '<button type="button" class="btn-outline btn-sm" onclick="viewCertificate(\'' + t.id + '\', \'TEAM\', \'PASS\')">Pass</button> ' +
+              nocBtn +
+              '<button type="button" class="btn-danger btn-sm" onclick="deleteTeamEntry(\'' + t.id + '\')">Delete</button>' +
+            '</td>' +
+          '</tr>';
+        }
+      }
+      document.getElementById('tbodyAdminTeams').innerHTML = tHtml;
+
+      var oHtml = '';
+      if (officials.length === 0) {
+        oHtml = '<tr><td colspan="5" style="text-align:center; padding:24px; color:#64748b;">No official applications received yet.</td></tr>';
+      } else {
+        for (var m = 0; m < officials.length; m++) {
+          var o = officials[m];
+          var opCls = o.status === 'Checked-Out' ? 'pill-checkout' : (o.status === 'Approved' ? 'pill-approved' : 'pill-pending');
+          var oCheckoutBtn = o.status === 'Approved'
+            ? '<button type="button" class="btn-gold btn-sm" onclick="checkoutEntry(\'' + o.id + '\', \'OFFICIAL\')">Checkout &amp; Unlock NOC</button> '
+            : '';
+          var oNocBtn = o.status === 'Checked-Out'
+            ? '<button type="button" class="btn-emerald btn-sm" onclick="viewCertificate(\'' + o.id + '\', \'OFFICIAL\', \'NOC\')">NOC</button> '
+            : '';
+
+          oHtml += '<tr>' +
+            '<td><strong>' + o.name + '</strong> (' + o.role + ')<div style="font-size:11px; color:#64748b;">' + o.mobile + ' - ' + o.city + '</div>' +
+            '<div class="date-badge">Stay: ' + (o.checkIn || '-') + ' to ' + (o.checkOut || '-') + '</div></td>' +
+            '<td class="col-male"><strong>' + o.maleBeds + ' Male Bed(s)</strong><div style="font-size:11px;">' + o.maleWing + ' (' + o.maleRef + ')</div></td>' +
+            '<td class="col-pink"><strong>' + o.femaleBeds + ' Female Bed(s)</strong><div style="font-size:11px;">' + o.femaleWing + ' (' + o.femaleRef + ')</div></td>' +
+            '<td><span class="pill ' + opCls + '">' + o.status + '</span></td>' +
+            '<td style="text-align:right; white-space:nowrap;">' +
+              '<button type="button" class="btn-indigo btn-sm" onclick="openAllotPopup(\'' + o.id + '\', \'OFFICIAL\')">' + (o.status === 'Pending Approval' ? 'Approve &amp; Allot' : 'Edit Wings') + '</button> ' +
+              oCheckoutBtn +
+              '<button type="button" class="btn-outline btn-sm" onclick="viewCertificate(\'' + o.id + '\', \'OFFICIAL\', \'PASS\')">Pass</button> ' +
+              oNocBtn +
+              '<button type="button" class="btn-danger btn-sm" onclick="deleteOfficialEntry(\'' + o.id + '\')">Delete</button>' +
+            '</td>' +
+          '</tr>';
+        }
+      }
+      document.getElementById('tbodyAdminOfficials').innerHTML = oHtml;
+    }
+
+    function deleteTeamEntry(id) {
+      if (!confirm('Are you sure you want to permanently DELETE this District Team entry?')) return;
+      if (deletedIds.indexOf(id) === -1) deletedIds.push(id);
+      teams = teams.filter(function(t) { return t.id !== id; });
+      saveStore();
+      renderAdminView();
+    }
+
+    function deleteOfficialEntry(id) {
+      if (!confirm('Are you sure you want to permanently DELETE this Judge/Official entry?')) return;
+      if (deletedIds.indexOf(id) === -1) deletedIds.push(id);
+      officials = officials.filter(function(o) { return o.id !== id; });
+      saveStore();
+      renderAdminView();
+    }
+
+    function openAllotPopup(id, cat) {
+      document.getElementById('allotItemId').value = id;
+      document.getElementById('allotItemCategory').value = cat;
+
+      var mOpts = '<option value="Not Applicable">Not Applicable (0 Male Beds)</option>';
+      var fOpts = '<option value="Not Applicable">Not Applicable (0 Female Beds)</option>';
+      for (var i = 0; i < facilities.length; i++) {
+        if (facilities[i].gender === 'Male Wing') {
+          mOpts += '<option value="' + facilities[i].name + '">' + facilities[i].name + '</option>';
+        } else {
+          fOpts += '<option value="' + facilities[i].name + '">' + facilities[i].name + '</option>';
+        }
+      }
+      document.getElementById('selAllotMaleWing').innerHTML = mOpts;
+      document.getElementById('selAllotFemaleWing').innerHTML = fOpts;
+
+      var item = findRecord(id, cat);
+      if (item) {
+        document.getElementById('modalAllotInfo').innerText =
+          (cat === 'TEAM' ? item.district + ' (' + item.teamNo + ')' : item.name) +
+          ' | Stay: ' + (item.checkIn || '-') + ' to ' + (item.checkOut || '-') +
+          ' | Male Beds: ' + item.maleBeds + ' | Female Pink Beds: ' + item.femaleBeds;
+      }
+      document.getElementById('modalAllot').className = 'modal-backdrop open no-print';
+    }
+
+    function saveAdminAllotment(e) {
+      e.preventDefault();
+      var id = document.getElementById('allotItemId').value;
+      var cat = document.getElementById('allotItemCategory').value;
+      var item = findRecord(id, cat);
+      if (!item) return;
+
+      item.maleWing = document.getElementById('selAllotMaleWing').value;
+      item.maleRef = document.getElementById('inpAllotMaleRef').value.trim() || 'Allotted';
+      item.femaleWing = document.getElementById('selAllotFemaleWing').value;
+      item.femaleRef = document.getElementById('inpAllotFemaleRef').value.trim() || 'Allotted';
+      item.status = 'Approved';
+      item.updatedAt = new Date().getTime();
+
+      saveStore();
+      closeModal('modalAllot');
+      renderAdminView();
+    }
+
+    function checkoutEntry(id, cat) {
+      var item = findRecord(id, cat);
+      if (!item) return;
+      if (!confirm('Confirm Checkout? This will release their beds and unlock the Official Checkout NOC on their ID.')) return;
+      item.status = 'Checked-Out';
+      item.updatedAt = new Date().getTime();
+      saveStore();
+      renderAdminView();
+      alert('Checked-Out! Official NOC is now unlocked on their portal.');
+    }
+
+    function findRecord(id, cat) {
+      var arr = cat === 'TEAM' ? teams : officials;
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i].id === id) return arr[i];
+      }
+      return null;
+    }
+
+    function openFacilityModal() {
+      document.getElementById('modalFacilityHeading').innerText = 'Add New Classroom / Wing';
+      document.getElementById('facEditId').value = '';
+      document.getElementById('facName').value = '';
+      document.getElementById('facCap').value = 30;
+      document.getElementById('modalFacility').className = 'modal-backdrop open no-print';
+    }
+
+    function editFacility(id) {
+      for (var i = 0; i < facilities.length; i++) {
+        if (facilities[i].id === id) {
+          document.getElementById('modalFacilityHeading').innerText = 'Edit Classroom / Wing';
+          document.getElementById('facEditId').value = facilities[i].id;
+          document.getElementById('facName').value = facilities[i].name;
+          document.getElementById('facGender').value = facilities[i].gender;
+          document.getElementById('facCap').value = facilities[i].capacity;
+          document.getElementById('modalFacility').className = 'modal-backdrop open no-print';
+          break;
+        }
+      }
+    }
+
+    function saveFacilityItem(e) {
+      e.preventDefault();
+      var id = document.getElementById('facEditId').value;
+      var nm = document.getElementById('facName').value.trim();
+      var gn = document.getElementById('facGender').value;
+      var cp = parseInt(document.getElementById('facCap').value, 10) || 25;
+
+      if (id) {
+        for (var i = 0; i < facilities.length; i++) {
+          if (facilities[i].id === id) {
+            facilities[i].name = nm;
+            facilities[i].gender = gn;
+            facilities[i].capacity = cp;
+          }
+        }
+      } else {
+        facilities.push({ id: 'f_' + new Date().getTime(), name: nm, gender: gn, capacity: cp });
+      }
+      saveStore();
+      closeModal('modalFacility');
+      renderAdminView();
+    }
+
+    function removeFacility(id) {
+      if (!confirm('Delete this classroom/wing?')) return;
+      facilities = facilities.filter(function(f) { return f.id !== id; });
+      saveStore();
+      renderAdminView();
+    }
+
+    function openPassModal() {
+      document.getElementById('modalPassword').className = 'modal-backdrop open no-print';
+    }
+
+    function saveNewPassword(e) {
+      e.preventDefault();
+      var np = document.getElementById('inpNewPass').value.trim();
+      if (!np) return;
+      passwords.admin = np;
+      saveStore();
+      document.getElementById('inpNewPass').value = '';
+      closeModal('modalPassword');
+      alert('Master Admin Password updated successfully.');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).className = 'modal-backdrop no-print';
+    }
+
+    function viewCertificate(id, cat, docType) {
+      var item = findRecord(id, cat);
+      if (!item) return;
+
+      if (docType === 'NOC' && item.status !== 'Checked-Out') {
+        alert('NOC is locked! It will unlock only after Admin marks this contingent as Checked-Out.');
+        return;
+      }
+
+      document.getElementById('certDocTitle').innerText = docType === 'NOC'
+        ? 'OFFICIAL CHECKOUT CLEARANCE NOC'
+        : 'OFFICIAL ACCOMMODATION BOARDING PASS';
+      document.getElementById('certDocSerial').innerText = 'SERIAL: #UPGA-' + id.slice(-5).toUpperCase();
+
+      var body = document.getElementById('certBodyArea');
+      if (cat === 'TEAM') {
+        body.innerHTML =
+          '<div class="grid-4" style="background:#f8fafc; padding:14px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">DISTRICT &amp; TEAM</div><div style="font-size:15px; font-weight:800;">' + item.district + ' - ' + item.teamNo + '</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">COACH / MANAGER</div><div style="font-size:15px; font-weight:800;">' + item.coach + ' (' + item.mobile + ')</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">STAY DURATION</div><div style="font-size:13px; font-weight:800; color:#312e81;">' + (item.checkIn || '-') + ' to ' + (item.checkOut || '-') + '</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">STATUS</div><div style="font-size:15px; font-weight:800; color:#059669;">' + item.status + '</div></div>' +
+          '</div>' +
+          '<div class="grid-2" style="margin-bottom:16px;">' +
+            '<div class="box-male"><div style="font-size:11px; font-weight:800;">MALE CONTINGENT ALLOTMENT</div><div style="font-size:16px; font-weight:800; margin:4px 0;">' + item.maleBeds + ' Male Beds (Boys: ' + item.malePlayers + ', Staff: ' + item.maleStaff + ')</div><div style="font-size:12px; font-weight:700;">Wing: ' + item.maleWing + ' (' + item.maleRef + ')</div></div>' +
+            '<div class="box-female-pink"><div style="font-size:11px; font-weight:800; color:#831843;">FEMALE CONTINGENT ALLOTMENT (PINK WING)</div><div style="font-size:16px; font-weight:800; color:#831843; margin:4px 0;">' + item.femaleBeds + ' Female Beds (Girls: ' + item.femalePlayers + ', Staff: ' + item.femaleStaff + ')</div><div style="font-size:12px; font-weight:700; color:#9d174d;">Wing: ' + item.femaleWing + ' (' + item.femaleRef + ')</div></div>' +
+          '</div>' +
+          '<div style="background:#f8fafc; padding:14px; border-radius:12px; border:1px solid #cbd5e1; font-size:13px;">' +
+            (docType === 'NOC'
+              ? '<strong>OFFICIAL NO OBJECTION CERTIFICATE (NOC):</strong> Certified that <strong>' + item.district + ' (' + item.teamNo + ')</strong> led by Coach <strong>' + item.coach + '</strong> (Stay: ' + (item.checkIn || '-') + ' to ' + (item.checkOut || '-') + ') has officially checked out and handed over all allotted Male and Female beds in good condition with zero pending dues.'
+              : '<strong>OFFICIAL BOARDING PASS:</strong> Please allow <strong>' + item.district + ' (' + item.teamNo + ')</strong> led by Coach <strong>' + item.coach + '</strong> to occupy the allotted Male Wing and Female Pink Wing beds from <strong>' + (item.checkIn || '-') + ' to ' + (item.checkOut || '-') + '</strong> during the UP State Gymnastics Championship 2026.') +
+          '</div>';
+      } else {
+        body.innerHTML =
+          '<div class="grid-4" style="background:#f8fafc; padding:14px; border-radius:12px; border:1px solid #cbd5e1; margin-bottom:16px;">' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">OFFICIAL NAME</div><div style="font-size:15px; font-weight:800;">' + item.name + '</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">ROLE &amp; CITY</div><div style="font-size:15px; font-weight:800;">' + item.role + ' (' + item.city + ')</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">STAY DURATION</div><div style="font-size:13px; font-weight:800; color:#312e81;">' + (item.checkIn || '-') + ' to ' + (item.checkOut || '-') + '</div></div>' +
+            '<div><div style="font-size:10px; font-weight:800; color:#64748b;">STATUS</div><div style="font-size:15px; font-weight:800; color:#059669;">' + item.status + '</div></div>' +
+          '</div>' +
+          '<div class="grid-2">' +
+            '<div class="box-male"><div style="font-size:11px; font-weight:800;">MALE OFFICIAL ALLOTMENT</div><div style="font-size:16px; font-weight:800; margin:4px 0;">' + item.maleBeds + ' Male Bed(s)</div><div style="font-size:12px; font-weight:700;">Wing: ' + item.maleWing + ' (' + item.maleRef + ')</div></div>' +
+            '<div class="box-female-pink"><div style="font-size:11px; font-weight:800; color:#831843;">FEMALE OFFICIAL ALLOTMENT (PINK WING)</div><div style="font-size:16px; font-weight:800; color:#831843; margin:4px 0;">' + item.femaleBeds + ' Female Bed(s)</div><div style="font-size:12px; font-weight:700; color:#9d174d;">Wing: ' + item.femaleWing + ' (' + item.femaleRef + ')</div></div>' +
+          '</div>';
+      }
+
+      showPage('viewCertificate');
+    }
+
+    function returnFromCertificate() {
+      showPage(previousPage || 'viewHome');
+    }
+
+    // Pull latest cloud entries immediately on startup
+    syncFromCloud(false);
+  </script>
+
+<script type="module">
+  import { initializeApp, getApps, getApp }
+    from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+
+ 
+import {
+  getFirestore,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+
+  import { getAuth }
+    from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcNwomeXmtiNCvuXnzkweWFdPT3se-UU4",
+    authDomain: "up-state-gym-accommodation.firebaseapp.com",
+    projectId: "up-state-gym-accommodation",
+    storageBucket: "up-state-gym-accommodation.firebasestorage.app",
+    messagingSenderId: "340921662733",
+    appId: "1:340921662733:web:cfb5e5dbd2e6d17e07c444"
+  };
+
+  const app = getApps().length
+    ? getApp()
+    : initializeApp(firebaseConfig);
+
+  window.firebaseDb = getFirestore(app);
+  window.firebaseAuth = getAuth(app);
+
+  console.log("Firebase initialized successfully");
+getDoc(doc(window.firebaseDb, "_connection_test", "ping"))
+  .then(() => {
+    console.log("Firestore request succeeded.");
+  })
+  .catch((error) => {
+    console.log("Firestore test result:", error.code);
+  });
+</script>
+</body>
+</html>
